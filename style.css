@@ -1,0 +1,37 @@
+:root{
+    --text: black;
+    --highlight: rgb(255, 220, 32);
+    --section: green;
+    --bland: gray;
+    --special: red;
+}
+
+@font-face {
+    font-family: 'matrix';
+    src: url(./fonts/OrbitronMedium-naY4.otf);
+}
+
+body{
+    background-image: url("https://www.textures4photoshop.com/tex/thumbs/matrix-code-animation-gif-free-animated-background-716.gif");
+    background-size: cover;
+    font-family: "matrix";
+    color: var(--highlight);
+}
+h1{
+    font-size: 6.5rem;
+    text-align: center;
+    margin: 2rem;
+}
+header img{
+    width: 60%;
+    border-radius: 50%;
+    display: inline;
+}
+.the_box{
+    background-color: var(--special);
+    display: inline;
+}
+
+.highlight{
+    color: var(--highlight);
+}
