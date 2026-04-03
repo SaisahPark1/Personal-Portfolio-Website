@@ -10,28 +10,96 @@
     font-family: 'matrix';
     src: url(./fonts/OrbitronMedium-naY4.otf);
 }
+@font-face {
+    font-family: 'matrix_large';
+    src: url(./fonts/OrbitronBold-10M0.ttf);
+}
 
 body{
     background-image: url("https://www.textures4photoshop.com/tex/thumbs/matrix-code-animation-gif-free-animated-background-716.gif");
     background-size: cover;
     font-family: "matrix";
-    color: var(--highlight);
+    color: var(--text);
 }
+
+#projects, #goals, #contact{
+    opacity: 0;
+    display: none;
+}
+
 h1{
     font-size: 6.5rem;
     text-align: center;
-    margin: 2rem;
-}
-header img{
-    width: 60%;
-    border-radius: 50%;
-    display: inline;
-}
-.the_box{
-    background-color: var(--special);
-    display: inline;
+    margin: 1rem;
+    font-family: "matrix_large";
 }
 
 .highlight{
     color: var(--highlight);
+}
+
+header img{
+    width: 60%;
+    border-radius: 50%;
+}
+.the_box{
+    background-color: var(--special);
+    width: 7rem;
+    height: 7rem;
+}
+
+section{
+    background-color: var(--section);
+    opacity: 80%;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+h2{
+    font-size: 3.5rem;
+    font-family: "matrix_large";
+}
+
+.side{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#about_me{
+    text-align: center;
+}
+
+section img{
+    width: 50%;
+    height: 50%;
+}
+
+p{
+    font-size: 1.5rem;
+}
+
+#travel_right{
+    position: absolute;
+    right: 1rem
+}
+
+.circle{
+    width: 14rem;
+    height: 6rem;
+    border: .3rem solid black;
+    border-radius: 5rem;
+}
+.circle h2{
+    margin: .75rem;
+}
+
+li.inactive{
+    color: var(--text);
+    font-size: 2rem;
+    transition: color 0.5s ease;
+}
+li.active{
+    color: var(--special);
+    transition: color 0.5s ease;
 }
