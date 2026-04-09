@@ -103,3 +103,59 @@ li.active{
     color: var(--special);
     transition: color 0.5s ease;
 }
+
+.hexagon {
+    width: 120px;
+    aspect-ratio: 1;
+    background: url('./project_images/Screenshot\ 2026-04-07\ 211318.png') center/cover no-repeat;
+    clip-path: polygon(
+        25% 0%, 75% 0%,
+        100% 50%,
+        75% 100%, 25% 100%,
+        0% 50%
+    );
+    margin: 20px;
+}
+
+#puzzle{
+    display: grid;
+    gap: 1rem;
+    grid-template-areas: 
+    "hexagon1 hexagon2"
+    "turn1 turn1"
+    "hexagon3 hexagon4"
+    "turn2 turn2"
+    "hexagon5 hexagon6";
+    place-items: start center;
+}
+
+#project1{
+    grid-area: hexagon1;
+}
+#project2{
+    grid-area: hexagon2;
+}
+#project3{
+    grid-area: hexagon3;
+}
+#project4{
+    grid-area: hexagon4;
+}
+#project5{
+    grid-area: hexagon5;
+}
+#project6{
+    grid-area: hexagon6;
+}
+#turn1{
+    grid-area: turn1;
+}
+#turn2{
+    grid-area: turn2;
+}
+
+#puzzle a{
+    text-align: center;
+    text-decoration: none;
+    color: var(--text);
+}
