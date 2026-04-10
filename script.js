@@ -4,16 +4,8 @@ $(document).ready(function() {
             $(this).stop().toggleClass('active').animate({ fontSize: '3rem' }, 500);;
         }
     );
-    $(".hexagon").hover(
-        function() {
-            $(this).children().stop().fadeTo(500, .8)
-        }
-    );
     $('li').on('mouseleave', function() {
         $(this).stop().toggleClass('inactive').animate({ fontSize: '2rem' }, 500);;
-    });
-    $('.hexagon').on('mouseleave', function() {
-        $(this).children().stop().fadeTo(500, 0)
     });
 });
 
