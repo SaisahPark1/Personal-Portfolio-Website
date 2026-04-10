@@ -104,17 +104,31 @@ li.active{
     transition: color 0.5s ease;
 }
 
-.hexagon {
-    width: 120px;
-    aspect-ratio: 1;
-    background: url('./project_images/Screenshot\ 2026-04-07\ 211318.png') center/cover no-repeat;
+.hexagon, .overlay{
+    width: 10rem;
+    aspect-ratio: 1.1;
     clip-path: polygon(
         25% 0%, 75% 0%,
         100% 50%,
         75% 100%, 25% 100%,
         0% 50%
     );
-    margin: 20px;
+    position: relative;
+    margin: 1rem;
+    box-sizing: border-box;
+    border: 1.4rem solid var(--highlight);
+}
+
+.overlay {
+    border: none;
+    position: absolute;
+    inset: 0;
+    left: -2.4rem;
+    top: -2.4rem;
+    background: var(--bland);
+    opacity: 0;
+    align-content: center;
+    color: var(--text);
 }
 
 #puzzle{
@@ -147,6 +161,24 @@ li.active{
 #project6{
     grid-area: hexagon6;
 }
+#project1 .hexagon{
+    background: url('./project_images/Custom_Homepage.png') center/cover no-repeat;
+}
+#project2 .hexagon{
+    background: url('./project_images/Flexbox_Layout.png') center/cover no-repeat;
+}
+#project3 .hexagon{
+    background: url('./project_images/PC_Store.png') center/cover no-repeat;
+}
+#project4 .hexagon{
+    background: url('./project_images/Music_Mixer.png') center/cover no-repeat;
+}
+#project5 .hexagon{
+    background: url('./project_images/Song_Guesser.png') center/cover no-repeat;
+}
+#project6 .hexagon{
+    background: url('./project_images/Personal_Portfolio.png') center/cover no-repeat;
+}
 #turn1{
     grid-area: turn1;
 }
@@ -158,6 +190,15 @@ li.active{
     text-align: center;
     text-decoration: none;
     color: var(--text);
+}
+
+#projects{
+    text-align: center;
+}
+
+footer{
+    background-color: var(--bland);
+    padding: 2rem;
 }
 
 .title, .certif_title, .certif_explain, .backend_title, .backend_explain, .gamedev_title, .gamedev_explain{
