@@ -200,3 +200,36 @@ footer{
     background-color: var(--bland);
     padding: 2rem;
 }
+
+.title, .certif_title, .certif_explain, .backend_title, .backend_explain, .gamedev_title, .gamedev_explain{
+    aspect-ratio: 1.1;
+    clip-path: polygon(
+        25% 0%, 75% 0%,
+        100% 50%,
+        75% 100%, 25% 100%,
+        0% 50%
+    );
+    margin: 1rem;
+    box-sizing: border-box;
+    background: var(--highlight);
+    text-align: center;
+    align-content: center;
+}
+
+#goals{
+    display: flex;
+}
+.title{
+    width: 18rem;
+}
+.certif_title, .backend_title, .gamedev_title{
+    width: 12rem;
+}
+.backend_explain, .certif_explain, .gamedev_explain{
+    width: 22rem;
+    padding: 3rem;
+}
+.certif_title, .certif_explain, .gamedev_explain, .gamedev_title{
+    justify-self: end;
+}
+
