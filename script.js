@@ -4,8 +4,16 @@ $(document).ready(function() {
             $(this).stop().toggleClass('active').animate({ fontSize: '3rem' }, 500);;
         }
     );
+    $(".hexagon").hover(
+        function() {
+            $(this).children().stop().fadeTo(500, .8)
+        }
+    );
     $('li').on('mouseleave', function() {
         $(this).stop().toggleClass('inactive').animate({ fontSize: '2rem' }, 500);;
+    });
+    $('.hexagon').on('mouseleave', function() {
+        $(this).children().stop().fadeTo(500, 0)
     });
 });
 
@@ -20,6 +28,7 @@ function travelRight(){
             currentIndex += 1
         });
     }
+    update()
 }
 function travelLeft(){
     if(currentIndex){
@@ -29,4 +38,39 @@ function travelLeft(){
         $(document.getElementById(cards[currentIndex-1])).fadeTo(500, .8);
         currentIndex -= 1
     })}
+}
+
+let currentOrder = [6, 4, 5, 3, 1, 2]
+let solved = false
+function update(){
+    if(!solved){
+        solved = true
+        document.getElementById("puzzle").style.gridTemplateAreas = 
+        `"hexagon${currentOrder[0]} hexagon${currentOrder[1]}" 
+        "turn1 turn1" 
+        "hexagon${currentOrder[2]} hexagon${currentOrder[3]}" 
+        "turn2 turn2" 
+        "hexagon${currentOrder[4]} hexagon${currentOrder[5]}"`
+        for(let i = 0; i < 6; i++){
+            let el = document.querySelector("#puzzle #project" + (i + 1));
+            if(currentOrder[i] == i + 1){
+                el.style.color = "var(--highlight)";
+            } else {
+                el.style.color = "red";
+                solved = false;
+            }
+        }
+        if(solved){
+            console.log("YAYAYA");
+        }
+    }
+}
+
+function rotateClockwise(){
+    [currentOrder[0], currentOrder[1], currentOrder[2], currentOrder[3]] = [currentOrder[2], currentOrder[0], currentOrder[3], currentOrder[1]];
+    update()
+}
+function rotateCounterClockwise(){
+    [currentOrder[2], currentOrder[3], currentOrder[4], currentOrder[5]] = [currentOrder[3], currentOrder[5], currentOrder[2], currentOrder[4]];
+    update()
 }

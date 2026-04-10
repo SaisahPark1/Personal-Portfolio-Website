@@ -103,3 +103,100 @@ li.active{
     color: var(--special);
     transition: color 0.5s ease;
 }
+
+.hexagon, .overlay{
+    width: 10rem;
+    aspect-ratio: 1.1;
+    clip-path: polygon(
+        25% 0%, 75% 0%,
+        100% 50%,
+        75% 100%, 25% 100%,
+        0% 50%
+    );
+    position: relative;
+    margin: 1rem;
+    box-sizing: border-box;
+    border: 1.4rem solid var(--highlight);
+}
+
+.overlay {
+    border: none;
+    position: absolute;
+    inset: 0;
+    left: -2.4rem;
+    top: -2.4rem;
+    background: var(--bland);
+    opacity: 0;
+    align-content: center;
+    color: var(--text);
+}
+
+#puzzle{
+    display: grid;
+    gap: 1rem;
+    grid-template-areas: 
+    "hexagon1 hexagon2"
+    "turn1 turn1"
+    "hexagon3 hexagon4"
+    "turn2 turn2"
+    "hexagon5 hexagon6";
+    place-items: start center;
+}
+
+#project1{
+    grid-area: hexagon1;
+}
+#project2{
+    grid-area: hexagon2;
+}
+#project3{
+    grid-area: hexagon3;
+}
+#project4{
+    grid-area: hexagon4;
+}
+#project5{
+    grid-area: hexagon5;
+}
+#project6{
+    grid-area: hexagon6;
+}
+#project1 .hexagon{
+    background: url('./project_images/Custom_Homepage.png') center/cover no-repeat;
+}
+#project2 .hexagon{
+    background: url('./project_images/Flexbox_Layout.png') center/cover no-repeat;
+}
+#project3 .hexagon{
+    background: url('./project_images/PC_Store.png') center/cover no-repeat;
+}
+#project4 .hexagon{
+    background: url('./project_images/Music_Mixer.png') center/cover no-repeat;
+}
+#project5 .hexagon{
+    background: url('./project_images/Song_Guesser.png') center/cover no-repeat;
+}
+#project6 .hexagon{
+    background: url('./project_images/Personal_Portfolio.png') center/cover no-repeat;
+}
+#turn1{
+    grid-area: turn1;
+}
+#turn2{
+    grid-area: turn2;
+}
+
+#puzzle a{
+    text-align: center;
+    text-decoration: none;
+    color: var(--text);
+}
+
+#projects{
+    text-align: center;
+}
+
+footer{
+    background-color: var(--bland);
+    padding: 2rem;
+}
