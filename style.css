@@ -32,22 +32,38 @@ h1{
     text-align: center;
     margin: 1rem;
     font-family: "matrix_large";
+    align-self: center;
 }
 
 .highlight{
     color: var(--highlight);
 }
 
+header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
 header img{
     width: 60%;
     border-radius: 50%;
 }
 .the_box{
+    padding: 1rem;
+    position: relative;
     background-color: var(--special);
     width: 7rem;
     height: 7rem;
+    align-self: center;
+}
+.the_box p{
+    position: relative;
 }
 
+.side{
+    display: flex;
+    justify-content: space-around;
+}
 section{
     background-color: var(--section);
     opacity: 80%;
@@ -55,15 +71,14 @@ section{
     padding: 1rem;
 }
 
+.hub>section{
+    overflow-y: auto;
+    height: 40rem;
+}
+
 h2{
     font-size: 3.5rem;
     font-family: "matrix_large";
-}
-
-.side{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
 }
 
 #about_me{
@@ -85,8 +100,8 @@ p{
 }
 
 .circle{
-    width: 14rem;
-    height: 6rem;
+    width: fit-content;
+    height: fit-content;
     border: .3rem solid black;
     border-radius: 5rem;
 }
@@ -233,3 +248,86 @@ footer{
     justify-self: end;
 }
 
+input{
+    width: 70%;
+    font-size: 1.5rem;
+}
+
+@media (min-width:768px){
+    h1{
+        max-width: 50%;
+    }
+    header img{
+        max-width: 45%;
+    }
+    .the_box{
+        margin: 1rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    h2{
+        font-size: 5rem;
+    }
+    p{
+        font-size: 2rem;
+    }
+    .hexagon, .overlay{
+        width: 15rem;
+    }
+    h3{
+        font-size: 2.5rem;
+    }
+    .title{
+        width: 25rem;
+    }
+    .certif_title, .backend_title, .gamedev_title{
+        width: 23rem;
+    }
+    .backend_explain, .certif_explain, .gamedev_explain{
+        width: 30rem;
+        padding: 3rem;
+    }
+    input{
+        font-size: 2rem;
+    }
+    section{
+        display: block;
+    }
+}
+@media (min-width:1400px){
+    h1{
+        font-size: 10rem;
+    }
+    .the_box{
+        margin: 1rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    h2{
+        font-size: 5rem;
+    }
+    p{
+        font-size: 2rem;
+    }
+    .hexagon, .overlay{
+        width: 15rem;
+    }
+    h3{
+        font-size: 2.5rem;
+    }
+    .title{
+        width: 25rem;
+    }
+    .certif_title, .backend_title, .gamedev_title{
+        width: 23rem;
+    }
+    .backend_explain, .certif_explain, .gamedev_explain{
+        width: 30rem;
+        padding: 3rem;
+    }
+    input{
+        font-size: 2rem;
+    }
+}

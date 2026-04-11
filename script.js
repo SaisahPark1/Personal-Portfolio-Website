@@ -15,6 +15,14 @@ $(document).ready(function() {
     $('.hexagon').on('mouseleave', function() {
         $(this).children().stop().fadeTo(500, 0)
     });
+    $(".the_box").animate({top: '1rem' }, 1000)
+    $(".the_box p").animate({top: '-7rem' }, 1000)
+    $("section").hover(
+        function() {
+            $("section").stop().animate({width: "1rem"})
+            $(this).stop().animate({width: "90%"})
+        }
+    );
 });
 
 currentIndex = 0
@@ -73,4 +81,26 @@ function rotateClockwise(){
 function rotateCounterClockwise(){
     [currentOrder[2], currentOrder[3], currentOrder[4], currentOrder[5]] = [currentOrder[3], currentOrder[5], currentOrder[2], currentOrder[4]];
     update()
+}
+
+let startX = 0;
+let endX = 0;
+
+document.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
+
+document.addEventListener("touchend", (e) => {
+  endX = e.changedTouches[0].clientX;
+  handleSwipe();
+});
+
+function handleSwipe() {
+  let diff = startX - endX;
+
+  if (diff > 50) {
+    travelLeft();
+  } else if (diff < -50) {
+    travelRight();
+  }
 }
