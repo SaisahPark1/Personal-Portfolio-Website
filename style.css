@@ -22,8 +22,7 @@ body{
     color: var(--text);
 }
 
-#projects, #goals, #contact{
-    opacity: 0;
+section.inactive{
     display: none;
 }
 
@@ -74,6 +73,10 @@ section{
 .hub>section{
     overflow-y: auto;
     height: 40rem;
+}
+
+.hub{
+    display: flex;
 }
 
 h2{
@@ -291,8 +294,21 @@ input{
     input{
         font-size: 2rem;
     }
-    section{
+    section.active{
+        width: 85%;
+        transition: width 1s;
+    }
+    section.inactive{
         display: block;
+        width: 5%;
+        transition: width 1s;
+    }
+    #goals{
+        display: flex;
+    }
+    
+    #travel_left, #travel_right{
+        display: none;
     }
 }
 @media (min-width:1400px){

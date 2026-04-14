@@ -19,16 +19,21 @@ $(document).ready(function() {
     $(".the_box p").animate({top: '-7rem' }, 1000)
     $("section").hover(
         function() {
-            $("section").stop().animate({width: "1rem"})
-            $(this).stop().animate({width: "90%"})
+            if (document.body.clientWidth >= 768){
+                $("section").removeClass("active").addClass("inactive")
+                $(this).removeClass("inactive").addClass("active");
+                $("section.active").children().fadeTo(500, 1);
+                $("section.inactive").children().fadeTo(500, 0);
+            }
         }
     );
 });
 
 currentIndex = 0
 cards = ["about_me", "projects", "goals", "contact"]
+
 function travelRight(){
-    if(currentIndex != 3){
+    if(currentIndex != 3 && (document.body.clientWidth < 768)){
         $(document.getElementById(cards[currentIndex])).fadeTo(500, 0, function(){
             document.getElementById(cards[currentIndex]).style.display = "none";
             document.getElementById(cards[currentIndex+1]).style.display = "block";
@@ -39,7 +44,7 @@ function travelRight(){
     update()
 }
 function travelLeft(){
-    if(currentIndex){
+    if(currentIndex && (document.body.clientWidth < 768)){
         $(document.getElementById(cards[currentIndex])).fadeTo(500, 0, function(){
         document.getElementById(cards[currentIndex]).style.display = "none";
         document.getElementById(cards[currentIndex-1]).style.display = "block";
