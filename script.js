@@ -17,13 +17,13 @@ $(document).ready(function() {
     });
     $(".the_box").animate({top: '1rem' }, 1000)
     $(".the_box p").animate({top: '-7rem' }, 1000)
-    $("section").hover(
+    $(".hub>section").hover(
         function() {
-            if (document.body.clientWidth >= 768){
-                $("section").removeClass("active").addClass("inactive")
-                $(this).removeClass("inactive").addClass("active");
-                $("section.active").children().fadeTo(500, 1);
-                $("section.inactive").children().fadeTo(500, 0);
+            if (window.innerWidth >= 768) {
+                $(".hub>section").hover(function () {
+                    let index = $(this).index();
+                    setActive(index);
+                });
             }
         }
     );
@@ -32,25 +32,29 @@ $(document).ready(function() {
 currentIndex = 0
 cards = ["about_me", "projects", "goals", "contact"]
 
-function travelRight(){
-    if(currentIndex != 3 && (document.body.clientWidth < 768)){
-        $(document.getElementById(cards[currentIndex])).fadeTo(500, 0, function(){
-            document.getElementById(cards[currentIndex]).style.display = "none";
-            document.getElementById(cards[currentIndex+1]).style.display = "block";
-            $(document.getElementById(cards[currentIndex+1])).fadeTo(500, .8);
-            currentIndex += 1
+function travelRight() {
+    if (currentIndex != 3 && document.body.clientWidth < 768) {
+        let current = $("#" + cards[currentIndex]);
+        let next = $("#" + cards[currentIndex + 1]);
+        current.fadeTo(500, 0, function () {
+            current.removeClass("active").addClass("inactive");
+            next.removeClass("inactive").addClass("active").fadeTo(500, 0.8);
+            currentIndex += 1;
         });
     }
-    update()
+    update();
 }
-function travelLeft(){
-    if(currentIndex && (document.body.clientWidth < 768)){
-        $(document.getElementById(cards[currentIndex])).fadeTo(500, 0, function(){
-        document.getElementById(cards[currentIndex]).style.display = "none";
-        document.getElementById(cards[currentIndex-1]).style.display = "block";
-        $(document.getElementById(cards[currentIndex-1])).fadeTo(500, .8);
-        currentIndex -= 1
-    })}
+
+function travelLeft() {
+    if (currentIndex && document.body.clientWidth < 768) {
+        let current = $("#" + cards[currentIndex]);
+        let prev = $("#" + cards[currentIndex - 1]);
+        current.fadeTo(500, 0, function () {
+            current.removeClass("active").addClass("inactive");
+            prev.removeClass("inactive").addClass("active").fadeTo(500, 0.8);
+            currentIndex -= 1;
+        });
+    }
 }
 
 let currentOrder = [6, 4, 5, 3, 1, 2]
@@ -104,8 +108,27 @@ function handleSwipe() {
   let diff = startX - endX;
 
   if (diff > 50) {
-    travelLeft();
-  } else if (diff < -50) {
     travelRight();
+  } else if (diff < -50) {
+    travelLeft();
   }
+}
+
+window.addEventListener("resize", () => {
+    if (window.innerWidth >= 768) {
+        $(".hub>section").css("opacity", .8).removeClass("active").addClass("inactive");
+        $("#" + cards[currentIndex]).removeClass("inactive").addClass("active");
+    }
+});
+
+function setActive(index) {
+    $(".hub>section")
+        .removeClass("active")
+        .addClass("inactive");
+
+    $("#" + cards[index])
+        .removeClass("inactive")
+        .addClass("active");
+
+    currentIndex = index;
 }

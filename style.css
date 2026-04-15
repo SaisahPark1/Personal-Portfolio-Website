@@ -22,10 +22,6 @@ body{
     color: var(--text);
 }
 
-section.inactive{
-    display: none;
-}
-
 h1{
     font-size: 6.5rem;
     text-align: center;
@@ -63,16 +59,18 @@ header img{
     display: flex;
     justify-content: space-around;
 }
-section{
+
+.hub>section{
     background-color: var(--section);
     opacity: 80%;
     margin: 1rem;
     padding: 1rem;
-}
-
-.hub>section{
     overflow-y: auto;
-    height: 40rem;
+    overscroll-behavior-y: none;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    height: 45rem;
+    width: 100%;
 }
 
 .hub{
@@ -214,6 +212,16 @@ li.active{
     text-align: center;
 }
 
+#goals{
+    display: grid;
+    gap: 1rem;
+    place-items: start center;
+}
+
+#project1{
+    grid-area: hexagon1;
+}
+
 footer{
     background-color: var(--bland);
     padding: 2rem;
@@ -234,8 +242,9 @@ footer{
     align-content: center;
 }
 
-#goals{
+.panel{
     display: flex;
+    flex-wrap: wrap;
 }
 .title{
     width: 18rem;
@@ -254,6 +263,16 @@ footer{
 input{
     width: 70%;
     font-size: 1.5rem;
+}
+
+section.active{
+    display: block;
+    width: 100%;
+    transition: width 1.5s;
+}
+section.inactive{
+    display: none;
+    transition: width 1.5s;
 }
 
 @media (min-width:768px){
@@ -276,7 +295,7 @@ input{
         font-size: 2rem;
     }
     .hexagon, .overlay{
-        width: 15rem;
+        width: 10rem;
     }
     h3{
         font-size: 2.5rem;
@@ -295,20 +314,31 @@ input{
         font-size: 2rem;
     }
     section.active{
-        width: 85%;
-        transition: width 1s;
+        width: 100%;
     }
     section.inactive{
         display: block;
-        width: 5%;
-        transition: width 1s;
+        width: 3%;
     }
-    #goals{
+    .panel{
         display: flex;
     }
     
     #travel_left, #travel_right{
         display: none;
+    }
+    .hub > section > * {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.75s ease;
+    }
+    .hub > section.active > * {
+        opacity: 1;
+    }
+}
+@media (min-width:1000px){
+    .hexagon, .overlay{
+        width: 15rem;
     }
 }
 @media (min-width:1400px){
@@ -326,9 +356,6 @@ input{
     }
     p{
         font-size: 2rem;
-    }
-    .hexagon, .overlay{
-        width: 15rem;
     }
     h3{
         font-size: 2.5rem;
