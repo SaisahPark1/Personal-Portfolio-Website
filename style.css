@@ -60,7 +60,7 @@ header img{
     justify-content: space-around;
 }
 
-.hub>section{
+.glitchbox>section{
     background-color: var(--section);
     opacity: 80%;
     margin: 1rem;
@@ -70,6 +70,10 @@ header img{
     scrollbar-width: none;
     -ms-overflow-style: none;
     height: 45rem;
+    width: 100%;
+}
+
+.glitchbox{
     width: 100%;
 }
 
@@ -113,11 +117,12 @@ p{
 li.inactive{
     color: var(--text);
     font-size: 2rem;
-    transition: color 0.5s ease;
+    transition: font-size .8s ease;
 }
 li.active{
     color: var(--special);
-    transition: color 0.5s ease;
+    font-size: 3rem;
+    transition: font-size .8s ease;
 }
 
 .hexagon, .overlay{
@@ -212,10 +217,9 @@ li.active{
     text-align: center;
 }
 
-#goals{
+.panel{
     display: grid;
-    gap: 1rem;
-    place-items: start center;
+    grid-template-columns: 1fr;
 }
 
 #project1{
@@ -235,17 +239,12 @@ footer{
         75% 100%, 25% 100%,
         0% 50%
     );
-    margin: 1rem;
     box-sizing: border-box;
     background: var(--highlight);
     text-align: center;
     align-content: center;
 }
 
-.panel{
-    display: flex;
-    flex-wrap: wrap;
-}
 .title{
     width: 18rem;
 }
@@ -263,6 +262,7 @@ footer{
 input{
     width: 70%;
     font-size: 1.5rem;
+    margin-left: 1rem;
 }
 
 section.active{
@@ -275,15 +275,32 @@ section.inactive{
     transition: width 1.5s;
 }
 
+#travel_left, #travel_right{
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+    background-color: var(--section);
+}
+
+.up, .down{
+    height: 1rem;
+    width: 100%;
+    background-image: url(./project_images/creation.gif);
+    position: relative;
+    top: -1rem;
+}
+
 @media (min-width:768px){
     h1{
         max-width: 50%;
+        font-size: 7rem;
     }
     header img{
         max-width: 45%;
     }
     .the_box{
         margin: 1rem;
+        margin-top: 5rem;
         width: 100%;
         text-align: center;
     }
@@ -291,8 +308,14 @@ section.inactive{
     h2{
         font-size: 5rem;
     }
-    p{
+    p, a{
         font-size: 2rem;
+    }
+    li.inactive{
+        font-size: 2.5rem;
+    }
+    li.active{
+        font-size: 3.5rem;
     }
     .hexagon, .overlay{
         width: 10rem;
@@ -305,6 +328,8 @@ section.inactive{
     }
     .certif_title, .backend_title, .gamedev_title{
         width: 23rem;
+        margin-left: 25%;
+        margin-right: 25%;
     }
     .backend_explain, .certif_explain, .gamedev_explain{
         width: 30rem;
@@ -320,19 +345,15 @@ section.inactive{
         display: block;
         width: 3%;
     }
-    .panel{
-        display: flex;
-    }
     
     #travel_left, #travel_right{
         display: none;
     }
-    .hub > section > * {
+    .glitchbox>section>* {
         opacity: 0;
-        pointer-events: none;
         transition: opacity 0.75s ease;
     }
-    .hub > section.active > * {
+    .glitchbox>section.active>* {
         opacity: 1;
     }
 }
@@ -341,36 +362,40 @@ section.inactive{
         width: 15rem;
     }
 }
-@media (min-width:1400px){
+@media (min-width:1300px){
+    .hexagon, .overlay{
+        width: 20rem;
+    }
     h1{
         font-size: 10rem;
     }
-    .the_box{
-        margin: 1rem;
-        width: 100%;
-        text-align: center;
-    }
 
     h2{
+        font-size: 7rem;
+    }
+    p, a{
+        font-size: 3rem;
+    }
+    li.inactive{
         font-size: 5rem;
     }
-    p{
-        font-size: 2rem;
+    li.active{
+        font-size: 7.5rem;
     }
     h3{
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
     .title{
-        width: 25rem;
+        width: 35rem;
     }
     .certif_title, .backend_title, .gamedev_title{
-        width: 23rem;
+        width: 30rem;
     }
     .backend_explain, .certif_explain, .gamedev_explain{
-        width: 30rem;
-        padding: 3rem;
+        width: 45rem;
+        padding: 4rem;
     }
     input{
-        font-size: 2rem;
+        font-size: 3rem;
     }
 }

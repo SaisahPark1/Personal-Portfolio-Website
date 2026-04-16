@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $("li").hover(
         function() {
-            $(this).stop().toggleClass('active').animate({ fontSize: '3rem' }, 500);;
+            $(this).stop().removeClass("inactive").addClass("active");
         }
     );
     $(".hexagon").hover(
@@ -10,17 +10,17 @@ $(document).ready(function() {
         }
     );
     $('li').on('mouseleave', function() {
-        $(this).stop().toggleClass('inactive').animate({ fontSize: '2rem' }, 500);;
+        $(this).stop().removeClass("active").addClass("inactive");
     });
     $('.hexagon').on('mouseleave', function() {
         $(this).children().stop().fadeTo(500, 0)
     });
     $(".the_box").animate({top: '1rem' }, 1000)
-    $(".the_box p").animate({top: '-7rem' }, 1000)
-    $(".hub>section").hover(
+    $(".the_box p").animate({top: '-10rem' }, 1000)
+    $(".glitchbox>section").hover(
         function() {
             if (window.innerWidth >= 768) {
-                $(".hub>section").hover(function () {
+                $(".glitchbox>section").hover(function () {
                     let index = $(this).index();
                     setActive(index);
                 });
@@ -73,7 +73,7 @@ function update(){
             if(currentOrder[i] == i + 1){
                 el.style.color = "var(--highlight)";
             } else {
-                el.style.color = "red";
+                el.style.color = "var(--special)";
                 solved = false;
             }
         }
@@ -116,19 +116,13 @@ function handleSwipe() {
 
 window.addEventListener("resize", () => {
     if (window.innerWidth >= 768) {
-        $(".hub>section").css("opacity", .8).removeClass("active").addClass("inactive");
+        $(".glitchbox>section").css("opacity", .8).removeClass("active").addClass("inactive");
         $("#" + cards[currentIndex]).removeClass("inactive").addClass("active");
     }
 });
 
 function setActive(index) {
-    $(".hub>section")
-        .removeClass("active")
-        .addClass("inactive");
-
-    $("#" + cards[index])
-        .removeClass("inactive")
-        .addClass("active");
-
+    $(".glitchbox>section").removeClass("active").addClass("inactive");
+    $("#" + cards[index]).removeClass("inactive").addClass("active");
     currentIndex = index;
 }
