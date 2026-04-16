@@ -20,10 +20,8 @@ $(document).ready(function() {
     $(".glitchbox>section").hover(
         function() {
             if (window.innerWidth >= 768) {
-                $(".glitchbox>section").hover(function () {
-                    let index = $(this).index();
-                    setActive(index);
-                });
+                let index = $(".glitchbox > section").index(this);
+                setActive(index);
             }
         }
     );
@@ -123,6 +121,8 @@ window.addEventListener("resize", () => {
 
 function setActive(index) {
     $(".glitchbox>section").removeClass("active").addClass("inactive");
+    $(".up,.down").removeClass("active").addClass("inactive");
     $("#" + cards[index]).removeClass("inactive").addClass("active");
+    $("." + cards[index]).stop().removeClass("inactive").addClass("active");
     currentIndex = index;
 }

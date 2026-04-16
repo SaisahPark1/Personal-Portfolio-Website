@@ -75,6 +75,9 @@ header img{
 
 .glitchbox{
     width: 100%;
+    position: relative;
+    flex: 1;
+    min-width: 0;
 }
 
 .hub{
@@ -270,7 +273,7 @@ section.active{
     width: 100%;
     transition: width 1.5s;
 }
-section.inactive{
+section.inactive,div.inactive{
     display: none;
     transition: width 1.5s;
 }
@@ -282,12 +285,20 @@ section.inactive{
     background-color: var(--section);
 }
 
-.up, .down{
-    height: 1rem;
+.up, .down {
+    position: absolute;
+    left: 0;
     width: 100%;
-    background-image: url(./project_images/creation.gif);
-    position: relative;
-    top: -1rem;
+    height: 1rem;
+    z-index: 2;
+}
+
+.up {
+    top: 0;
+}
+
+.down {
+    bottom: 0;
 }
 
 @media (min-width:768px){
