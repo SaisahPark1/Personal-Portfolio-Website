@@ -74,7 +74,7 @@ header img{
 }
 
 .glitchbox{
-    max-width: 90%;
+    width: 100%;
     position: relative;
     flex: 1;
     min-width: 0;
@@ -281,7 +281,7 @@ section.active{
     width: 100%;
     transition: width 1.5s;
 }
-section.inactive,div.inactive{
+section.inactive{
     display: none;
     transition: width 1.5s;
 }
@@ -293,13 +293,9 @@ section.inactive,div.inactive{
     background-color: var(--section);
 }
 
-.up, .down {
-    position: absolute;
-    left: 0;
-    width: 100%;
+.up, .down{
     height: 1rem;
     z-index: 2;
-    background-image: url(./project_images/creation.gif);
 }
 
 .up {
