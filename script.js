@@ -32,8 +32,8 @@ cards = ["about_me", "projects", "goals", "contact"]
 
 function travelRight() {
     if (currentIndex != 3 && document.body.clientWidth < 768) {
-        let current = $("#" + cards[currentIndex]);
-        let next = $("#" + cards[currentIndex + 1]);
+        let current = $("#" + cards[currentIndex]).closest(".glitchbox");
+        let next = $("#" + cards[currentIndex + 1]).closest(".glitchbox");
         current.fadeTo(500, 0, function () {
             current.removeClass("active").addClass("inactive");
             next.removeClass("inactive").addClass("active").fadeTo(500, 0.8);
@@ -45,8 +45,8 @@ function travelRight() {
 
 function travelLeft() {
     if (currentIndex && document.body.clientWidth < 768) {
-        let current = $("#" + cards[currentIndex]);
-        let prev = $("#" + cards[currentIndex - 1]);
+        let current = $("#" + cards[currentIndex]).closest(".glitchbox");
+        let prev = $("#" + cards[currentIndex - 1]).closest(".glitchbox");
         current.fadeTo(500, 0, function () {
             current.removeClass("active").addClass("inactive");
             prev.removeClass("inactive").addClass("active").fadeTo(500, 0.8);
@@ -120,9 +120,8 @@ window.addEventListener("resize", () => {
 });
 
 function setActive(index) {
-    $(".glitchbox>section").removeClass("active").addClass("inactive");
-    $(".up,.down").removeClass("active").addClass("inactive");
-    $("#" + cards[index]).removeClass("inactive").addClass("active");
-    $("." + cards[index]).stop().removeClass("inactive").addClass("active");
+    $(".glitchbox").removeClass("active").addClass("inactive");
+    let box = $(".glitchbox").eq(index);
+    box.removeClass("inactive").addClass("active");
     currentIndex = index;
 }
