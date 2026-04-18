@@ -86,7 +86,7 @@ header img{
 
 .up, .down{
     margin: 0 !important;
-    background-image: url(./project_images/creation.gif);
+    background-image: url(./pictures+downloads/creation.gif);
     width: 100%;
     height: 4rem;
 }
@@ -220,22 +220,22 @@ li.active{
     grid-area: hexagon6;
 }
 #project1 .hexagon{
-    background: url('./project_images/Custom_Homepage.png') center/cover no-repeat;
+    background: url('./pictures+downloads/Custom_Homepage.png') center/cover no-repeat;
 }
 #project2 .hexagon{
-    background: url('./project_images/Flexbox_Layout.png') center/cover no-repeat;
+    background: url('./pictures+downloads/Flexbox_Layout.png') center/cover no-repeat;
 }
 #project3 .hexagon{
-    background: url('./project_images/PC_Store.png') center/cover no-repeat;
+    background: url('./pictures+downloads/PC_Store.png') center/cover no-repeat;
 }
 #project4 .hexagon{
-    background: url('./project_images/Music_Mixer.png') center/cover no-repeat;
+    background: url('./pictures+downloads/Music_Mixer.png') center/cover no-repeat;
 }
 #project5 .hexagon{
-    background: url('./project_images/Song_Guesser.png') center/cover no-repeat;
+    background: url('./pictures+downloads/Song_Guesser.png') center/cover no-repeat;
 }
 #project6 .hexagon{
-    background: url('./project_images/Personal_Portfolio.png') center/cover no-repeat;
+    background: url('./pictures+downloads/Personal_Portfolio.png') center/cover no-repeat;
 }
 #turn1{
     grid-area: turn1;
@@ -414,7 +414,7 @@ section.inactive{
         width: 15rem;
     }
 }
-@media (min-width:1400px){
+@media (min-width:1300px){
     h1{
         font-size: 10rem;
     }
@@ -433,7 +433,7 @@ section.inactive{
         width: 40rem;
     }
     .hexagon, .overlay{
-        width: 20rem;
+        width: 25rem;
     }
     a{
         font-size: 2rem;
