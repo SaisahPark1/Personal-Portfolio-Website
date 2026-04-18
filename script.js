@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $("li").hover(
         function() {
-            $(this).stop().removeClass("inactive").addClass("active");
+            $(this).stop().toggleClass('active').animate({ fontSize: '3rem' }, 500);;
         }
     );
     $(".hexagon").hover(
@@ -10,32 +10,35 @@ $(document).ready(function() {
         }
     );
     $('li').on('mouseleave', function() {
-        $(this).stop().removeClass("active").addClass("inactive");
+        $(this).stop().toggleClass('inactive').animate({ fontSize: '2rem' }, 500);;
     });
     $('.hexagon').on('mouseleave', function() {
         $(this).children().stop().fadeTo(500, 0)
     });
     $(".the_box").animate({top: '1rem' }, 1000)
-    $(".the_box p").animate({top: '-10rem' }, 1000)
-    $(".glitchbox>section").hover(
+    $(".the_box p").animate({top: '-9rem' }, 1000)
+    $(".hub>section").hover(
         function() {
             if (window.innerWidth >= 768) {
-                $(".glitchbox>section").hover(function () {
+                $(".hub>section").hover(function () {
                     let index = $(this).index();
                     setActive(index);
                 });
             }
         }
     );
+    $(".up, .down").css("opacity", 0);
 });
+
 
 currentIndex = 0
 cards = ["about_me", "projects", "goals", "contact"]
 
+
 function travelRight() {
     if (currentIndex != 3 && document.body.clientWidth < 768) {
-        let current = $("#" + cards[currentIndex]).closest(".glitchbox");
-        let next = $("#" + cards[currentIndex + 1]).closest(".glitchbox");
+        let current = $("#" + cards[currentIndex]);
+        let next = $("#" + cards[currentIndex + 1]);
         current.fadeTo(500, 0, function () {
             current.removeClass("active").addClass("inactive");
             next.removeClass("inactive").addClass("active").fadeTo(500, 0.8);
@@ -45,10 +48,11 @@ function travelRight() {
     update();
 }
 
+
 function travelLeft() {
     if (currentIndex && document.body.clientWidth < 768) {
-        let current = $("#" + cards[currentIndex]).closest(".glitchbox");
-        let prev = $("#" + cards[currentIndex - 1]).closest(".glitchbox");
+        let current = $("#" + cards[currentIndex]);
+        let prev = $("#" + cards[currentIndex - 1]);
         current.fadeTo(500, 0, function () {
             current.removeClass("active").addClass("inactive");
             prev.removeClass("inactive").addClass("active").fadeTo(500, 0.8);
@@ -57,23 +61,25 @@ function travelLeft() {
     }
 }
 
+
 let currentOrder = [6, 4, 5, 3, 1, 2]
 let solved = false
 function update(){
+    console.log(currentOrder);
     if(!solved){
         solved = true
-        document.getElementById("puzzle").style.gridTemplateAreas = 
-        `"hexagon${currentOrder[0]} hexagon${currentOrder[1]}" 
-        "turn1 turn1" 
-        "hexagon${currentOrder[2]} hexagon${currentOrder[3]}" 
-        "turn2 turn2" 
+        document.getElementById("puzzle").style.gridTemplateAreas =
+        `"hexagon${currentOrder[0]} hexagon${currentOrder[1]}"
+        "turn1 turn1"
+        "hexagon${currentOrder[2]} hexagon${currentOrder[3]}"
+        "turn2 turn2"
         "hexagon${currentOrder[4]} hexagon${currentOrder[5]}"`
         for(let i = 0; i < 6; i++){
             let el = document.querySelector("#puzzle #project" + (i + 1));
             if(currentOrder[i] == i + 1){
                 el.style.color = "var(--highlight)";
             } else {
-                el.style.color = "var(--special)";
+                el.style.color = "red";
                 solved = false;
             }
         }
@@ -82,6 +88,7 @@ function update(){
         }
     }
 }
+
 
 function rotateClockwise(){
     [currentOrder[0], currentOrder[1], currentOrder[2], currentOrder[3]] = [currentOrder[2], currentOrder[0], currentOrder[3], currentOrder[1]];
@@ -92,20 +99,25 @@ function rotateCounterClockwise(){
     update()
 }
 
+
 let startX = 0;
 let endX = 0;
+
 
 document.addEventListener("touchstart", (e) => {
   startX = e.touches[0].clientX;
 });
+
 
 document.addEventListener("touchend", (e) => {
   endX = e.changedTouches[0].clientX;
   handleSwipe();
 });
 
+
 function handleSwipe() {
   let diff = startX - endX;
+
 
   if (diff > 50) {
     travelRight();
@@ -114,17 +126,63 @@ function handleSwipe() {
   }
 }
 
+
 window.addEventListener("resize", () => {
     if (window.innerWidth >= 768) {
-        $(".glitchbox>section").css("opacity", .8).removeClass("active").addClass("inactive");
+        $(".hub>section").css("opacity", .8).removeClass("active").addClass("inactive");
         $("#" + cards[currentIndex]).removeClass("inactive").addClass("active");
     }
 });
 
+
 function setActive(index) {
-    $(".glitchbox>section").removeClass("active").addClass("inactive");
-    $(".up,.down").removeClass("active").addClass("inactive");
-    $("#" + cards[index]).removeClass("inactive").addClass("active");
-    $("." + cards[index]).stop().removeClass("inactive").addClass("active");
+    $(".hub>section")
+        .removeClass("active")
+        .addClass("inactive");
+
+
+    $("#" + cards[index])
+        .removeClass("inactive")
+        .addClass("active");
+
+
     currentIndex = index;
 }
+
+
+document.querySelectorAll(".hub > section").forEach(section => {
+    let lastScrollTop = 0;
+    let lastDirection = null;
+    let scrollTimeout
+    section.addEventListener("scroll", function () {
+        let currentScroll = section.scrollTop;
+        let direction = null;
+        if (currentScroll > lastScrollTop) direction = "down";
+        else if (currentScroll < lastScrollTop) direction = "up";
+
+
+        if (direction && direction !== lastDirection) {
+            if (direction === "down") {
+                $(this).find(".down").stop(true, true).animate({ opacity: 1 }, 0);
+                $(this).find(".up").stop(true, true).animate({ opacity: 0 }, 200);
+            } else {
+                $(this).find(".up").stop(true, true).animate({ opacity: 1 }, 0);
+                $(this).find(".down").stop(true, true).animate({ opacity: 0 }, 200);
+            }
+
+
+            lastDirection = direction;
+        }
+        lastScrollTop = currentScroll;
+
+
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            $(this).find(".up, .down").stop(true, true).animate({ opacity: 0 }, 200);
+            lastDirection = null;
+        }, 200);
+    });
+});
+
+
+update();
